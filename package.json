@@ -1,0 +1,11 @@
+{
+  "name": "react-calendar-app",
+  "version": "0.0.0",
+  "description": "A weekly calendar app",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap tests"
+  },
+  "author": "Trey Davis <trey@drixel.com> (http://treydavis.github.io/)",
+  "license": "ISC"
+}
