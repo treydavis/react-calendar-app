@@ -2,30 +2,34 @@ var React = require('react');
 
 var DateHeader = React.createClass({
   render: function() {
-    var dateStyle = {
-      fontSize: 17,
-      fontWeight: "bold"
-    };
-    var date = React.createElement('span', {style: dateStyle}, '22');
-    var day = React.createElement('span', null, 'Sun');
+    var weekIncrement = new Date();
+    weekIncrement.setDate(weekIncrement.getDate() - weekIncrement.getDay());
 
-    var dateContainerStyle = {};
-    var dateContainer = React.createElement('div', {style: dateContainerStyle}, [date, day]);
-
+    var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
     var headerItems = [];
     
     for (var d=0; d<7; d++) {
+      var dateStyle = {
+        fontSize: 17,
+        fontWeight: "bold"
+      };
+      var day = React.createElement('span', null, days[d]);
+
+      var dateContainerStyle = {};
+      var dateContainer = React.createElement('div', {style: dateContainerStyle}, day);
       var dateHeaderItemStyle = {
         position: "absolute",
         left: (100/7.0*d).toString() + "%",
         right: (100/7.0*(7-(d+1))).toString() + "%"
       };
-      headerItems.push(React.createElement('div', {style: dateHeaderItemStyle}, dateContainer));      
+      
+      headerItems.push(React.createElement('div', {style: dateHeaderItemStyle}, dateContainer));
+      weekIncrement.setDate(weekIncrement.getDate() + 1);
     }
 
     var dateHeaderStyle = {
       position: "absolute",
-      top: 0, right: 0, left: 0,
+      top: 0, right: 0, left: 50,
       height: 50
     };
     return React.createElement('div', {style: dateHeaderStyle}, headerItems);
