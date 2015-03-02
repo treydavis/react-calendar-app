@@ -30,7 +30,7 @@ var App = React.createClass({
     var button = React.createElement('button', {onClick: this.handleClick}, "+");
     var header = React.createElement(DateHeader, {date: Date.now()});
     var body = React.createElement(CalendarBody, {date: Date.now(), events: this.state.events});
-    return React.createElement('div', null, [header, body, button]);
+    return React.createElement('div', null, [button, header, body]);
   }
 });
 
