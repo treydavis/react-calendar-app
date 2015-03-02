@@ -1,4 +1,5 @@
 var React = require('react');
+var Event = require('./Event');
 
 var Events = React.createClass({
   eventsToEventGroups: function(sourceEvents) {
@@ -38,52 +39,16 @@ var Events = React.createClass({
   },
   render: function() {
     var eventGroups = this.eventsToEventGroups(this.props.events);
-    //loop over event groups
-    //for each event in event group, add an event
+    
     var eventElements = [];
     for (var eg in eventGroups) {
       var eventGroup = eventGroups[eg];
-      for (var e=0; e<eventGroup.events.length; e++) {
-        var event = eventGroup.events[e];
-        var dayStart = new Date(event.start);
-        dayStart.setHours(0);
-        var day = event.start.getDay();
-
-        var bgStyle = {
-          position: "absolute",
-          top: 0, right: 0, bottom: 0, left: 0,
-          backgroundColor: "#fff2bf",
-          opacity: 0.6
-        };
-        var bg = React.createElement('div', {style: bgStyle});
-
-        var titleStyle = {
-          position: "absolute",
-          top: 0, right: 0, bottom: 0, left: 0,
-          overflow: "hidden",
-          wordBreak: "break-word"
-        };
-        var title = React.createElement('div', {style: titleStyle}, event.title);
-
-        var overlappedEventStyle = {
-          position: "absolute",
-          left: (e/eventGroup.events.length*100).toString() + "%",
-          right: ((1-(e+1)/eventGroup.events.length)*100).toString() + "%",
-          top: 0, bottom: 0
-        };
-        var overlapped = React.createElement('div', {style: overlappedEventStyle}, [bg, title]);
-
-        var DAY_IN_MSEC = 86400000;
-        
-        var eventContainerStyle = {
-          position: "absolute",
-          top: ((event.start.getTime()-dayStart.getTime())/DAY_IN_MSEC*100).toString() + "%",
-          bottom: (100-((event.end.getTime()-dayStart.getTime()))/DAY_IN_MSEC*100).toString() + "%",
-          left: (100/7.0*day).toString() + "%",
-          right: (100/7.0*(7-(day+1))).toString() + "%",
-          overflow: "visible"
-        };
-        eventElements.push(React.createElement('div', {style: eventContainerStyle}, overlapped));
+      for (var e=0; e<eventGroup.events.length; e++) {        
+        eventElements.push(React.createElement(Event, {
+          event: eventGroup.events[e],
+          collisionIndex: e,
+          collisionLength: eventGroup.events.length
+        }));
       }
     }
     
