@@ -29,10 +29,15 @@ var App = React.createClass({
   },
   
   render: function() {
-    var button = React.createElement('button', {onClick: this.handleClick}, "+");
+    var addEventButtonStyle = {
+      width: 30,
+      height: 30,
+      fontSize: "large"
+    };
+    var addEventButton = React.createElement('button', {onClick: this.handleClick, style: addEventButtonStyle}, "+");
     var header = React.createElement(DateHeader, {date: Date.now()});
     var body = React.createElement(CalendarBody, {date: Date.now(), events: this.state.events});
-    return React.createElement('div', null, [button, header, body]);
+    return React.createElement('div', null, [addEventButton, header, body]);
   }
 });
 
