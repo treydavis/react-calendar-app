@@ -4,7 +4,7 @@ var Grid = React.createClass({
   render: function() {
     // for every half-hour
     var gridElements = [];
-    for (var hour=0; hour<24; hour+=0.5) {
+    for (var hour=0.5; hour<24; hour+=0.5) {
       //half hour lines
       var lineStyle = {
         position: "absolute",
@@ -28,7 +28,7 @@ var Grid = React.createClass({
           top: (hour/24.0*100).toString() + "%",
           width: 50
         };
-        var hourString = hour < 12 ? (hour+1).toString() : (hour-11).toString();
+        var hourString = hour > 12 ? (hour-12).toString() : hour.toString();
         gridElements.push(React.createElement('div', {style: hourLabelStyle}, hourString));
       }
       

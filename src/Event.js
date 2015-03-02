@@ -4,7 +4,7 @@ var Event = React.createClass({
   render: function() {
     var event = this.props.event;
     var dayStart = new Date(event.start);
-    dayStart.setHours(0);
+    dayStart.setHours(0); dayStart.setMinutes(0); dayStart.setSeconds(0);
     var day = event.start.getDay();
     var collisionIndex = this.props.collisionIndex;
     var collisionLength = this.props.collisionLength;

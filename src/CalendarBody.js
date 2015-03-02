@@ -9,7 +9,7 @@ var CalendarBody = React.createClass({
 
     var contentStyle = {
       position: "absolute",
-      top: 50, right: 0, bottom: 0, left: 0,
+      top: 0, right: 0, bottom: 0, left: 0,
       height: 1200
     };
     var content = React.createElement('div', {style: contentStyle}, [grid, events]);
