@@ -4,8 +4,13 @@
   "description": "A weekly calendar app",
   "main": "index.js",
   "scripts": {
-    "test": "tap tests"
+    "start": "browserify src/* -o bundle.js",
+    "watch": "watchify src/* -o bundle.js",
+    "test": "tap tests/"
   },
   "author": "Trey Davis <trey@drixel.com> (http://treydavis.github.io/)",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "react": "^0.12.2"
+  }
 }
