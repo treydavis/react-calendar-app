@@ -27,7 +27,7 @@ var DateHeader = React.createClass({
       top: 0, right: 0, left: 0,
       height: 50
     };
-    return React.createElement('span', {style: dateHeaderStyle}, headerItems);;
+    return React.createElement('span', {style: dateHeaderStyle}, headerItems);
   }
 });
 
