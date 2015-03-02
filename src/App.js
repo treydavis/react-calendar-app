@@ -20,8 +20,10 @@ var App = React.createClass({
     
     var start = randomDateInCurrentWeek();
     var end = new Date(start);
-    end.setHours(start.getHours()+3);
+    var endHours = start.getHours()+3;
+    end.setHours(endHours>23 ? 23 : endHours);
     var event = {start: start, end: end, title: "Boston Orioles @ Detroit Tigers"};
+    console.log(event);
     
     this.setState({events: this.state.events.concat([event])});
   },
