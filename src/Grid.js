@@ -23,10 +23,10 @@ var Grid = React.createClass({
           color: "#666",
           left: 0,
           textAlign: "right",
-          marginTop: -7,
+          marginTop: -10,
           backgroundColor: "#fff",
           top: (hour/24.0*100).toString() + "%",
-          width: 50
+          width: 45
         };
         var hourString = hour > 12 ? (hour-12).toString() : hour.toString();
         gridElements.push(React.createElement('div', {style: hourLabelStyle}, hourString));
