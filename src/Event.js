@@ -13,7 +13,8 @@ var Event = React.createClass({
       position: "absolute",
       top: 0, right: 0, bottom: 0, left: 0,
       backgroundColor: "#fff2bf",
-      opacity: 0.6
+      opacity: 0.75,
+      zIndex: 1
     };
     var bg = React.createElement('div', {style: bgStyle});
 
@@ -21,7 +22,8 @@ var Event = React.createClass({
       position: "absolute",
       top: 0, right: 0, bottom: 0, left: 0,
       overflow: "hidden",
-      wordBreak: "break-word"
+      wordBreak: "break-word",
+      zIndex: 2
     };
     var title = React.createElement('div', {style: titleStyle}, event.title);
 
